@@ -1,0 +1,10 @@
+If want to commit something, here some things that will very usefull,
+
+    [ ] - Docs
+     |  [ ] - comments on code, if you know what something does a comment on it would be nice to help noobies out
+     |
+     |  [ ] - documention of use, if there are parts of the gui/cli left undocumented, either a issue or fixing it yourself will help greatly
+     |
+     |  [ ] - documention of progress, if theres a commit and progress has increased in a certain field please update it
+   [ | ]
+
