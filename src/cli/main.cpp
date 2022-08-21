@@ -174,26 +174,29 @@ char
 const sector_start[95] = "java -jar revanvedcli.jar -a youtube.apk -c -o revanced.apk -b patches.jar -m integrations.apk";
 char
 const sector_end[160] = " -e background-play -e exclusive-audio-playback -e codecs-unlock -e upgrade-button-remover -e tasteBuilder-remover -e upgrade-button-remover --experimental";
+std::string sector_intregrations_true = "";
 //Functions 
 int complier(char ** argv, int argc) {
         std::cout << "complier\n\tNumber of complier args: " << (argc - 2) << std::endl; // delete this later
         for (int i = 0; i < (argc); i++) {
                 for (auto & x: sector_intregrations) {
-                        if (std::string(argv[i]) == x.first) {
+                        if (std::string(argv[i]) == x.first) { // sets the arguments to true
                                 x.second = 1;
                                 commands_found++;
                         }
                 }
         }
-        for (auto & x: sector_intregrations) {
+        for (auto & x: sector_intregrations) { // checks if the arguments are true
                 if (x.second == 1) {
                         std::cout << "Mapped " << x.first << " to true" << std::endl;
+                        sector_intregrations_true = sector_intregrations_true + " -i " + x.first;
                 }
         }
         if (((argc - 2) - commands_found) != 0) {
                 std::cout << ((argc - 2) - commands_found) << " extra arguments found\n enter to proceed" << std::endl;
                 std::cin >> data_dump;
         }
+        std::cout << "full command: \n" << sector_start << sector_intregrations_true << sector_end << std::endl;
         return 0;
 }
 
