@@ -224,9 +224,8 @@ int main(int argc, char * argv[]) {
                         }
                 } else if (std::string(argv[1]) == "--complie") {
                         complier(argv, argc);
-                }
-        } else if (std::string(argv[1]) == "--complier") {
+                } else if (std::string(argv[1]) == "--complier") {
                 complier(argv, argc);
-        }
+        }}
         return 0;
 }
