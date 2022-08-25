@@ -176,6 +176,13 @@ char
 const sector_end[160] = " -e background-play -e exclusive-audio-playback -e codecs-unlock -e upgrade-button-remover -e tasteBuilder-remover -e upgrade-button-remover --experimental";
 std::string sector_intregrations_true = "";
 //Functions 
+int complier_arguments(char ** argv, int argc, int args_passed, int args_remain) {
+        if (std::string(argv[(argc-args_passed)]) == "--help"){
+                std::cout << "test" << std::endl;
+        }
+        return 0;
+}
+
 int complier(char ** argv, int argc) {
         std::cout << "complier\n\tNumber of complier args: " << (argc - 2) << std::endl; // delete this later
         for (int i = 0; i < (argc); i++) {
@@ -193,10 +200,15 @@ int complier(char ** argv, int argc) {
                 }
         }
         if (((argc - 2) - commands_found) != 0) {
-                std::cout << ((argc - 2) - commands_found) << " extra arguments found\n enter to proceed" << std::endl;
+                std::cout << ((argc - 2) - commands_found) << " extra arguments found\n type Y to procced to complier arguments" << std::endl;
                 std::cin >> data_dump;
+                if (data_dump == 'Y'){
+                        complier_arguments(argv,argc,commands_found,((argc - 2) - commands_found));
+                }
         }
-        std::cout << "full command: \n" << sector_start << sector_intregrations_true << sector_end << std::endl;
+        std::string command = sector_start + sector_intregrations_true + sector_end;
+        std::cout << "full command: \n" << command << std::endl;
+
         return 0;
 }
 
@@ -226,6 +238,10 @@ int main(int argc, char * argv[]) {
                         complier(argv, argc);
                 } else if (std::string(argv[1]) == "--complier") {
                 complier(argv, argc);
-        }}
+                }
+                else if (std::string(argv[1]) == "-c") {
+                complier(argv, argc);
+                }
+        }
         return 0;
 }
